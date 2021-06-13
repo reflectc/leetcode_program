@@ -1,6 +1,13 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+"""
+    @author: ran
+    @file: number_of_1_bits_191.py
+    @time: 2021/6/13 18:12
+    @desc:
+"""
+
 from collections import defaultdict
 
 dx = [-1, 1, 0, 0]
