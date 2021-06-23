@@ -40,3 +40,21 @@ class Solution(object):
             profit[i][2][0] = max(profit[i - 1][2][0], profit[i - 1][1][1] + prices[i])
 
         return max(profit[n - 1][0][0], profit[n - 1][1][0], profit[n - 1][2][0])
+
+    def maxProfit2(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if not prices:
+            return 0
+
+        buy1, sell1 = -prices[0], 0
+        buy2, sell2 = -prices[0], 0
+
+        for i in range(1, len(prices)):
+            buy1 = max(buy1, -prices[i])
+            sell1 = max(sell1, buy1 + prices[i])
+            buy2 = max(buy2, sell1 - prices[i])
+            sell2 = max(sell2, buy2 + prices[i])
+        return sell2
