@@ -34,3 +34,18 @@ class Solution(object):
             res = max(res, profit[i][0], profit[i][1])
 
         return res
+
+    def maxProfit2(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if not prices:
+            return 0
+
+        max_profit = 0
+        n = len(prices)
+        for i in range(n - 1):
+            max_profit = max_profit + max(prices[i + 1] - prices[i], 0)
+
+        return max_profit
