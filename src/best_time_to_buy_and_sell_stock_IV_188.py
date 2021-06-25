@@ -39,3 +39,23 @@ class Solution(object):
                 sell[i][j] = max(sell[i - 1][j], buy[i - 1][j - 1] + prices[i])
 
         return max(sell[n - 1])
+
+    def maxProfit2(self, k, prices):
+        """
+        :type k: int
+        :type prices: List[int]
+        :rtype: int
+        """
+        if not prices:
+            return 0
+
+        n = len(prices)
+        k = min(k, n // 2)
+        buy = [float('-inf')] * (k + 1)
+        sell = [0] * (k + 1)
+
+        for p in prices:
+            for kk in range(1, k + 1):
+                buy[kk] = max(buy[kk], sell[kk - 1] - p)
+                sell[kk] = max(sell[kk], buy[kk] + p)
+        return sell[k]
