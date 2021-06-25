@@ -43,6 +43,20 @@ class Solution(object):
         if not prices:
             return 0
 
+        buy, sell = float('-inf'), 0
+        for p in prices:
+            buy = max(buy, sell - p)
+            sell = max(sell, buy + p)
+        return sell
+
+    def maxProfit3(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if not prices:
+            return 0
+
         max_profit = 0
         n = len(prices)
         for i in range(n - 1):
