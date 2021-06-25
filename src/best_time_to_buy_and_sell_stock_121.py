@@ -44,7 +44,6 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-
         if not prices:
             return 0
 
@@ -52,5 +51,4 @@ class Solution(object):
         for p in prices:
             buy = max(buy, -p)
             sell = max(sell, buy + p)
-
         return sell
