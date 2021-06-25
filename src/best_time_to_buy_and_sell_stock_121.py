@@ -38,3 +38,19 @@ class Solution(object):
             res = max(res, profit[i][0], profit[i][1], profit[i][2])
 
         return res
+
+    def maxProfit2(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+
+        if not prices:
+            return 0
+
+        buy, sell = float('-inf'), 0
+        for p in prices:
+            buy = max(buy, -p)
+            sell = max(sell, buy + p)
+
+        return sell
